@@ -11,25 +11,25 @@ function App() {
 
   const passwordGenerator = useCallback(() => {
     let pass = ""
-    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789~`?><{}[]()=-+_\|"
     if (numberAllowed) str += "1234567890"
     if (charAllowed) str += "!@#$%^&*~`"
 
     for (let i = 1; i <= length; i++) {
       let char = Math.floor(Math.random() * str.length + 1)
-      pass = str.charAt(char)
+      pass += str.charAt(char)
     }
     setPassword(pass)
 
   }, [length, numberAllowed, charAllowed, setPassword])
 
   useEffect(() => {
-    
-  },[length,numberAllowed,charAllowed,paa])
+    passwordGenerator()
+  },[length,numberAllowed,charAllowed,passwordGenerator])
 
   return (
     <>
-      <div className='w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-4 my-8 text-white bg-gray-800'><h1 className='text-white text-center mb-3 text-2xl'>Password Generator</h1>
+      <div className='w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-4 my-8 text-orange-500 bg-gray-800'><h1 className='text-white text-center mb-3 text-2xl'>Password Generator</h1>
         <div className='flex shadow rotate-lg overflow-hidden mb-4'>
           <input
             type="text"
